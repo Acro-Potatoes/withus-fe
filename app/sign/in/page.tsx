@@ -5,7 +5,7 @@ const SignInPage = () => {
     return (
         <main className="flex flex-col items-center gap-4">
             <h1 className="text-3xl font-bold mb-4">Logo</h1>
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-5xl font-semibold">
                 WithUS에 오신 것을 환영합니다!
             </h1>
             <p className="text-lg">
