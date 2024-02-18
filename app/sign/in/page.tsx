@@ -24,9 +24,11 @@ const SignInPage = () => {
                 </div>
                 <GoogleButton />
             </div>
-            <div className='text-center'>
+            <div className="text-center">
                 <p>WithUS에 처음 오시나요?</p>
-                <Link href={'/sign/up'} className='text-blue-600'>새로운 계정으로 시작하기</Link>
+                <Link href={'/sign/up'} className="text-blue-600">
+                    새로운 계정으로 시작하기
+                </Link>
             </div>
         </main>
     )
