@@ -9,7 +9,7 @@ const SignInPage = () => {
             <h1 className="text-5xl font-semibold">
                 WithUS에 오신 것을 환영합니다!
             </h1>
-            <p className="text-lg">
+            <p className="text-xl">
                 <span className="font-semibold">
                     그룹에서 사용하는 이메일 주소
                 </span>
@@ -24,7 +24,10 @@ const SignInPage = () => {
                 </div>
                 <GoogleButton />
             </div>
-            <Link href={'/sign/up'} className=''>회원가입</Link>
+            <div className='text-center'>
+                <p>WithUS에 처음 오시나요?</p>
+                <Link href={'/sign/up'} className='text-blue-600'>새로운 계정으로 시작하기</Link>
+            </div>
         </main>
     )
 }
