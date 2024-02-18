@@ -10,6 +10,7 @@ const SignInForm = () => {
                 type="email"
                 placeholder="name@work-email.com"
                 required
+                autoFocus
             />
             <TextField
                 name="password"
@@ -17,7 +18,7 @@ const SignInForm = () => {
                 placeholder="password"
                 required
             />
-            <Button type="submit">계속</Button>
+            <Button type="submit">시작하기</Button>
         </form>
     )
 }
