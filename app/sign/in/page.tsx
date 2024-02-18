@@ -1,5 +1,6 @@
 import { GoogleButton } from '#/app/ui/buttons'
 import SignInForm from '#/app/ui/sign/sign-in-form'
+import Link from 'next/link'
 
 const SignInPage = () => {
     return (
@@ -23,6 +24,7 @@ const SignInPage = () => {
                 </div>
                 <GoogleButton />
             </div>
+            <Link href={'/sign/up'} className=''>회원가입</Link>
         </main>
     )
 }
