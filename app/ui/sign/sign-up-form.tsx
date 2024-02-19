@@ -51,10 +51,10 @@ const SignUpForm = () => {
                 <TextField
                     id="phone"
                     name="phone"
-                    placeholder="'-'를 제외하고 입력해주세요."
+                    placeholder="'-' 를 제외하고 입력해주세요."
                 />
             </div>
-            <Button type="submit">계정 생성하기</Button>
+            <Button type="submit">계속</Button>
         </form>
     )
 }
