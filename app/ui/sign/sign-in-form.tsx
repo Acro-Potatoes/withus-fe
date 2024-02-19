@@ -1,4 +1,6 @@
-import { signIn } from '#/app/lib/actions'
+'use client'
+
+import { signIn } from '#/app/lib/actions/authActions'
 import { Button } from '#/app/ui/buttons'
 import { TextField } from '#/app/ui/inputs'
 
