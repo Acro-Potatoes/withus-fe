@@ -1,12 +1,48 @@
-import { InputHTMLAttributes } from 'react'
+'use client'
+
+import { InputHTMLAttributes, useState } from 'react'
+import { CheckIcon } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
 
 export const TextField = ({
     ...rest
 }: InputHTMLAttributes<HTMLInputElement>) => {
+    const [isFocus, setIsFocus] = useState(false)
     return (
-        <input
-            className="peer w-full border border-gray-400 rounded-md py-2 px-4 text-md placeholder:text-gray-400 focus:outline-orange-400 my-2"
-            {...rest}
-        />
+        <div
+            className={clsx(
+                'group w-full border border-gray-400 rounded-md py-2 px-4 my-2',
+                { 'border-orange-400': isFocus },
+            )}
+        >
+            <input
+                className="w-full text-md placeholder:text-gray-400 outline-0"
+                onFocus={() => setIsFocus(true)}
+                onBlur={() => setIsFocus(false)}
+                {...rest}
+            />
+        </div>
+    )
+}
+
+export const ValidTextField = ({
+    ...rest
+}: InputHTMLAttributes<HTMLInputElement>) => {
+    const [isFocus, setIsFocus] = useState(false)
+    return (
+        <div
+            className={clsx(
+                'group flex justify-between items-center gap-2 w-full border border-gray-400 rounded-md py-2 px-4 my-2',
+                { 'border-orange-400': isFocus },
+            )}
+        >
+            <input
+                className="w-full text-md placeholder:text-gray-400 outline-0"
+                onFocus={() => setIsFocus(true)}
+                onBlur={() => setIsFocus(false)}
+                {...rest}
+            />
+            <CheckIcon className="text-green-500" />
+        </div>
     )
 }
