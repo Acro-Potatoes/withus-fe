@@ -2,9 +2,23 @@
 
 import { signUp } from '#/app/lib/actions/authActions'
 import { Button } from '#/app/ui/buttons'
-import { TextField } from '#/app/ui/inputs'
+import { FormField, TextField } from '#/app/ui/inputs'
+import { useForm } from 'react-hook-form'
+
+export type SignUpFormData = {
+    email: string
+    password: string
+    confirmPassword: string
+    userName: string
+    phone: number
+}
 
 const SignUpForm = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SignUpFormData>()
     return (
         <form action={signUp} className="flex flex-col gap-2">
             <div>
@@ -54,6 +68,12 @@ const SignUpForm = () => {
                     placeholder="'-' 를 제외하고 입력해주세요."
                 />
             </div>
+            <FormField
+                type="email"
+                name="email"
+                register={register}
+                error={errors.email}
+            />
             <Button type="submit">계속</Button>
         </form>
     )

@@ -1,14 +1,15 @@
 'use server'
 
+import { SignUpFormData } from '#/app/ui/sign/sign-up-form'
 import { z } from 'zod'
 
-export const signIn = async (formData: FormData) => {
-    const rawFormData = {
-        email: formData.get('email'),
-        password: formData.get('password'),
-    }
+export const signIn = async (formData: SignUpFormData) => {
+    // const rawFormData = {
+    //     email: formData.get('email'),
+    //     password: formData.get('password'),
+    // }
 
-    console.log(rawFormData)
+    console.log(formData)
 }
 
 export const signUp = async (formData: FormData) => {
