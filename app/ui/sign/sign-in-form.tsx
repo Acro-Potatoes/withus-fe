@@ -2,12 +2,11 @@
 
 import { signIn } from '#/app/lib/actions/authActions'
 import { Button } from '#/app/ui/buttons'
-import { TextField } from '#/app/ui/inputs'
 
 const SignInForm = () => {
     return (
         <form action={signIn}>
-            <TextField
+            {/* <TextField
                 name="email"
                 type="email"
                 placeholder="name@work-email.com"
@@ -19,7 +18,7 @@ const SignInForm = () => {
                 type="password"
                 placeholder="password"
                 required
-            />
+            /> */}
             <Button type="submit">시작하기</Button>
         </form>
     )
