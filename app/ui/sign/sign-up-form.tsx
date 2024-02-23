@@ -1,26 +1,24 @@
 'use client'
 
-import { signUp } from '#/app/lib/actions/authActions'
 import { Button } from '#/app/ui/buttons'
-import { FormField, TextField } from '#/app/ui/inputs'
+import { FormField } from '#/app/ui/inputs'
+import { SignUpFormData, SignUpSchema } from '#/app/ui/sign/type'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-
-export type SignUpFormData = {
-    email: string
-    password: string
-    confirmPassword: string
-    userName: string
-    phone: number
-}
 
 const SignUpForm = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<SignUpFormData>()
+    } = useForm<SignUpFormData>({ resolver: zodResolver(SignUpSchema) })
+
+    const signUp = (formData: SignUpFormData) => {
+        console.log(formData)
+    }
+
     return (
-        <form action={signUp} className="flex flex-col gap-2">
+        <form onSubmit={handleSubmit(signUp)} className="flex flex-col gap-2">
             <div>
                 <label htmlFor="email">이메일</label>
                 <FormField
@@ -28,7 +26,6 @@ const SignUpForm = () => {
                     type="email"
                     name="email"
                     placeholder="name@work-email.com"
-                    required
                     autoFocus
                     register={register}
                     error={errors.email}
@@ -41,7 +38,6 @@ const SignUpForm = () => {
                     name="password"
                     type="password"
                     placeholder="password"
-                    required
                     register={register}
                     error={errors.password}
                 />
@@ -53,7 +49,6 @@ const SignUpForm = () => {
                     name="confirmPassword"
                     type="password"
                     placeholder="password"
-                    required
                     register={register}
                     error={errors.confirmPassword}
                 />
@@ -64,7 +59,6 @@ const SignUpForm = () => {
                     id="userName"
                     name="userName"
                     placeholder="이름을 입력해주세요."
-                    required
                     register={register}
                     error={errors.userName}
                 />
@@ -77,6 +71,7 @@ const SignUpForm = () => {
                     placeholder="'-' 를 제외하고 입력해주세요."
                     register={register}
                     error={errors.phone}
+                    valueAsNumber
                 />
             </div>
             <Button type="submit">계속</Button>
