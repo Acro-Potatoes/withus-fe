@@ -5,7 +5,6 @@ import { CheckIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import { FieldError, UseFormRegister } from 'react-hook-form'
 import { SignUpFormData } from '#/app/ui/sign/type'
-import { ValidFieldName } from '#/app/ui/type'
 
 interface FormFieldType extends InputHTMLAttributes<HTMLInputElement> {
     register: UseFormRegister<SignUpFormData>
@@ -13,6 +12,13 @@ interface FormFieldType extends InputHTMLAttributes<HTMLInputElement> {
     name: ValidFieldName
     valueAsNumber?: boolean
 }
+
+export type ValidFieldName =
+    | 'email'
+    | 'password'
+    | 'confirmPassword'
+    | 'userName'
+    | 'phone'
 
 export const FormField = ({
     name,
