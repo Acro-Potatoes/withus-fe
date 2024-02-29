@@ -1,24 +1,25 @@
 'use client'
 
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '#/app/ui/buttons'
 import { FormField } from '#/app/ui/inputs'
-import { SignUpFormData, SignUpSchema } from '#/app/ui/sign/type'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { SignUpFormData } from '#/app/ui/sign/type'
+import { SignUpSchema } from '#/app/lib/validation'
 
-const SignUpForm = () => {
+export default function SignUpForm({
+    signUp,
+}: {
+    signUp: (formData: FormData) => void
+}) {
     const {
         register,
-        handleSubmit,
-        formState: { errors },
+        formState: { isValid, errors },
     } = useForm<SignUpFormData>({ resolver: zodResolver(SignUpSchema) })
 
-    const signUp = (formData: SignUpFormData) => {
-        console.log(formData)
-    }
-
     return (
-        <form onSubmit={handleSubmit(signUp)} className="flex flex-col gap-2">
+        // <form onSubmit={handleSubmit(signUp)} className="flex flex-col gap-2">
+        <form action={signUp} className="flex flex-col gap-2">
             <div>
                 <label htmlFor="email">이메일</label>
                 <FormField
@@ -71,12 +72,9 @@ const SignUpForm = () => {
                     placeholder="'-' 를 제외하고 입력해주세요."
                     register={register}
                     error={errors.phone}
-                    valueAsNumber
                 />
             </div>
             <Button type="submit">계속</Button>
         </form>
     )
 }
-
-export default SignUpForm
